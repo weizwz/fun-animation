@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>3D文字</title>
+  <style>
+    :root {
+      --color: rgba(224, 18, 34, .8);
+    }
+    .text {
+      width: 50%;
+      margin: 100px auto;
+      font-size: 200px;
+      line-height: 300px;
+      letter-spacing: 20px;
+      color: #fff;
+      /* text-shadow: -3px -3px 0 rgba(0, 0, 0, 0.8), 10px 10px 0 rgba(0, 0, 0, 0.8); */
+      text-shadow: -1px -1px var(--color),-2px -2px var(--color),-3px -3px var(--color),-4px -4px var(--color),
+      -5px -5px var(--color),-6px -6px var(--color),-7px -7px var(--color),-8px -8px var(--color),
+      1px 1px var(--color),2px 2px var(--color),3px 3px var(--color),4px 4px var(--color),
+      5px 5px var(--color),6px 6px var(--color),7px 7px var(--color),8px 8px var(--color);
+      font-style: italic;
+      transform: rotate3d(1, 1, 1, -10deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="text">
+    ¥3698
+  </div>
+</body>
+</html>
