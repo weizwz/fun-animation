@@ -1,5 +1,5 @@
-# funcss
-有趣的css
+# funAnimation
+有趣的前端动画
 
 ### lantern.html
 > 摇曳的春节灯笼
