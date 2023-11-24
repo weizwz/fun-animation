@@ -10,3 +10,7 @@
 > 3D文字，用作价格是不是很酷
 
 ![images](./preview/3dtext.png)
+
+### barrage.html
+
+![images](./preview/barrage.gif)
