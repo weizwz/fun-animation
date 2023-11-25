@@ -51,14 +51,16 @@
       position: absolute;
       color: #000;
       font-size: 1.2rem;
+      height: 30px;
       line-height: 30px;
+      padding: 0 15px;
       border-radius: 30px;
       will-change: transform;
       transition: transform 12s linear 0s;
+      background: rgba(255, 255, 255, .8);
     }
     .barrage-text {
       display: inline-block;
-      padding: 10px;
       max-width: 300px;
       font-size: 1.2rem;
       overflow: hidden;
@@ -112,14 +114,15 @@
   <script>
     const colors = ["#fff","#ff4d4f",'#ff7a45','#ffa940','#ffc53d','#ffec3d','#a0d911','#73d13d','#36cfc9','#4096ff','#597ef7','#9254de','#f759ab','#000'];
     const texts = ['笔落惊风雨👻','学废了','文章似天成✒️','十年磨一剑','看完了，就是不会','如同天上降魔主','呕心沥血之作❤️','看着很复杂，其实一点也不简单',
-    '墙都不扶就服你👍','这家技术太高，我们换一家学','666！','⭐已收藏，下次再看','他竟然视图教会我😭'];
+    '墙都不扶就服你👍','这家技术太高，我们换一家学','666!','⭐已收藏，下次再看','他竟然视图教会我😭',
+    '越看越兴奋❤️','期待已久'];
 
     // 弹幕动画
     function barrageRun($dom, time) {
       const myTime = time || 10;
       const $content = document.querySelector('#barrage-div');
       const width = $content.clientWidth;
-      const height = $content.clientHeight - 30;
+      const height = $content.clientHeight - 32;
       // 随机产生颜色
       const color = colors[parseInt(Math.random() * colors.length)];
       $dom.style.color = color;
@@ -128,7 +131,7 @@
       }
       // 随机设置高度，固定航道
       let randomH = Math.random() * height;
-      randomH = randomH - randomH % 30;
+      randomH = randomH - randomH % 32;
       $dom.style.top = randomH + 'px';
       // 初始值为容器可见区域的最大值
       $dom.style.left = `${width}px`;
