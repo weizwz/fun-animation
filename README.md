@@ -1,5 +1,5 @@
 # funAnimation
-有趣的前端动画
+有趣的样式和动画
 
 ### lantern.html
 > 摇曳的春节灯笼
