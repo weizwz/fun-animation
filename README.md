@@ -12,5 +12,11 @@
 ![images](./preview/3dtext.png)
 
 ### barrage.html
+> 自动弹幕
 
 ![images](./preview/barrage.gif)
+
+### fluidBtn.html
+> 流体按钮
+
+![images](./preview/fluidBtn.gif)

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>流体按钮</title>
+  <style>
+    .flex {
+      width: 400px;
+      height: 100px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      border: solid 1px #ddd;
+    }
+    button {
+      padding: 5px 10px;
+      border: solid 1px #333;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+      flex: 1;
+      transition: 0.4s;
+    }
+    button:hover {
+      color: #fff;
+      background: #2e6bf2;
+      padding: 5px 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex">
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+  </div>
+</body>
+</html>
