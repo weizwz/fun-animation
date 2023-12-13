@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>funAnimation</title>
+  <style>
+    :root {
+      --color: #409eff;
+    }
+    #nav { display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+    .item { height: 40px; padding: 0 10px; line-height: 40px; font-size: 18px; margin-right: 10px; cursor: pointer; position: relative; }
+    .item::before {content: ''; position: absolute; bottom: 2px; left: 10px; width: 0; height: 2px; border-radius: 2px;  background: var(--color); transition-duration: 0.3s; }
+    .item:hover { color: var(--color)  }
+    .item:hover::before { width: calc(100% - 20px); }
+  </style>
+</head>
+<body>
+  <div id="nav">
+    <!-- <div class="item"></div> -->
+  </div>
+  <div id="main"></div>
+</body>
+<script src="./js/router.js"></script>
+<script>
+  let router;
+  const config = [
+    { name: '过年灯笼', path: 'page/lantern.html' },
+    { name: '3D文字', path: 'page/3dtext.html' },
+    { name: '自动弹幕', path: 'page/barrage.html' },
+    { name: '流体按钮', path: 'page/fluidBtn.html' },
+    { name: '流光按钮', path: 'page/danceTime.html' },
+  ]
+  document.body.onload = function() {
+    let navStr = ''
+    for (const item of config) {
+      navStr += `<div class="item" onclick="router.linkTo('${item.path}')">${item.name}</div>`;
+    }
+    document.querySelector('#nav').innerHTML = navStr;
+    router = new Router({
+      container: document.querySelector('#main')
+    })
+  }
+</script>
+</html>
