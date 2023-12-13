@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>流光按钮</title>
   <style>
-    body { background: #000; }
-    div {
-      margin: 60px auto;
+    body { background: #000;}
+    div.dance-btn {
       width: 200px;
       height: 60px;
+      margin: 50px auto;
       border-radius: 60px;
       line-height: 60px;
       text-align: center;
@@ -19,9 +19,10 @@
       background-size: 400%;
       cursor: pointer;
       position: relative;
-      animation: btnrun 8s linear infinite;
+      z-index: 1;
+      animation: dance 8s linear infinite;
     }
-    div::before {
+    div.dance-btn::before {
       content: '';
       position: absolute;
       inset: -5px;
@@ -30,13 +31,13 @@
       background: linear-gradient(90deg, #409eff, #1be9cd, #ff9146, #409eff);
       background-size: 400%;
       opacity: 0;
-      animation: btnrun 8s linear infinite;
+      animation: dance 8s linear infinite;
     }
-    div:hover::before {
+    div.dance-btn:hover::before {
       filter: blur(20px);
       opacity: 1;
     }
-    @keyframes btnrun {
+    @keyframes dance {
       from {
         background-position: 0%;
       }
@@ -47,6 +48,6 @@
   </style>
 </head>
 <body>
-  <div>流光按钮</div>
+  <div class="dance-btn">流光按钮</div>
 </body>
 </html>

@@ -29,7 +29,7 @@
     .content {
       width: 100%;
       height: 100%;
-      background: url(../img/barrage.png) no-repeat center/cover;
+      background: #409eff url(../img/barrage.png) no-repeat center/cover;
       border-radius: 20px;
     }
     .barrage-wrapper {
@@ -110,83 +110,6 @@
       cursor: pointer;
     }
   </style>
-
-  <script>
-    const colors = ["#fff","#ff4d4f",'#ff7a45','#ffa940','#ffc53d','#ffec3d','#a0d911','#73d13d','#36cfc9','#4096ff','#597ef7','#9254de','#f759ab','#000'];
-    const texts = ['笔落惊风雨👻','学废了','文章似天成✒️','十年磨一剑','看完了，就是不会','如同天上降魔主','呕心沥血之作❤️','看着很复杂，其实一点也不简单',
-    '墙都不扶就服你👍','这家技术太高，我们换一家学','666!','⭐已收藏，下次再看','他竟然视图教会我😭',
-    '越看越兴奋❤️','期待已久'];
-
-    // 弹幕动画
-    function barrageRun($dom, time) {
-      const myTime = time || 10;
-      const $content = document.querySelector('#barrage-div');
-      const width = $content.clientWidth;
-      const height = $content.clientHeight - 32;
-      // 随机产生颜色
-      const color = colors[parseInt(Math.random() * colors.length)];
-      $dom.style.color = color;
-      if (color === '#000') {
-        $dom.children[0].style.textShadow = '#999 1px 0 1px, #999 0 1px 1px, #999 0 -1px 1px, #999 -1px 0 1px';
-      }
-      // 随机设置高度，固定航道
-      let randomH = Math.random() * height;
-      randomH = randomH - randomH % 32;
-      $dom.style.top = randomH + 'px';
-      // 初始值为容器可见区域的最大值
-      $dom.style.left = `${width}px`;
-      $dom.style.transform = `translateX(-${width + 300}px)`;
-      $dom.style.transition = `transform ${time}s linear 0s`;
-      setTimeout(function() {
-        $content.removeChild($dom);
-      }, myTime * 1000);
-    }
-    // 创造弹幕
-    function barrageCreate(_text) {
-      const $barrage = document.createElement('div');
-      const time = document.querySelector('#time').value;
-      $barrage.setAttribute('class', 'barrage-item');
-      $barrage.innerHTML = `<span class="barrage-text">${_text}</span>`
-      document.querySelector("#barrage-div").appendChild($barrage)//将span放入页面div中
-      barrageRun($barrage, time);
-    }
-    // 定时器
-    function timerCreate(time, _texts) {
-      var timer = null;
-      var textArr = JSON.parse(JSON.stringify(_texts));
-      // 文字循环一次之后，重新开始
-      if (textArr.length <= 0) {
-        textArr = JSON.parse(JSON.stringify(texts));
-      }
-      timer = setTimeout(function(){
-        // 随机取字
-        const textIdx = parseInt(Math.random() * (textArr.length - 1));
-        // 创建弹幕
-        barrageCreate(textArr[textIdx]);
-        // 删除用过的文字，避免文字重复
-        textArr.splice(textIdx, 1);
-        // 下一个随机时间
-        const curTime = Math.random() * 1000 + 500;
-        if (timer) clearTimeout(timer);
-        timerCreate(curTime, textArr);
-      }, time)
-    }
-    // 设置弹幕范围
-    function setbarrageWrapper() {
-      const top = document.querySelector('#top').value;
-      const bottom = document.querySelector('#bottom').value;
-      const $wrapper = document.querySelector('.barrage-wrapper');
-      $wrapper.style.top = top + "%";
-      $wrapper.style.bottom = bottom + "%";
-    }
-
-    window.onload = function () {
-      document.querySelector('#btn').onclick = function () {
-        setbarrageWrapper();
-        timerCreate(1, texts);
-      }
-    }
-  </script>
 </head>
 
 <body>
@@ -212,10 +135,88 @@
         <input type="number" class="text" id="bottom" value="30" />
       </div>
       <div class="oper-wrapper">
-        <button type="button" class="btn" id="btn">发射弹幕</button>
+        <button type="button" class="btn" id="barrageBtn">发射弹幕</button>
       </div>
     </div>
   </div>
 </body>
+<script>
+  const colors = ["#fff","#ff4d4f",'#ff7a45','#ffa940','#ffc53d','#ffec3d','#a0d911','#73d13d','#36cfc9','#4096ff','#597ef7','#9254de','#f759ab','#000'];
+  const texts = ['笔落惊风雨👻','学废了','文章似天成✒️','十年磨一剑','看完了，就是不会','如同天上降魔主','呕心沥血之作❤️','看着很复杂，其实一点也不简单',
+  '墙都不扶就服你👍','这家技术太高，我们换一家学','666!','⭐已收藏，下次再看','他竟然视图教会我😭',
+  '越看越兴奋❤️','期待已久'];
 
+  // 弹幕动画
+  function barrageRun($dom, time) {
+    const myTime = time || 10;
+    const $content = document.querySelector('#barrage-div');
+    const width = $content.clientWidth;
+    const height = $content.clientHeight - 32;
+    // 随机产生颜色
+    const color = colors[parseInt(Math.random() * colors.length)];
+    $dom.style.color = color;
+    if (color === '#000') {
+      $dom.children[0].style.textShadow = '#999 1px 0 1px, #999 0 1px 1px, #999 0 -1px 1px, #999 -1px 0 1px';
+    }
+    // 随机设置高度，固定航道
+    let randomH = Math.random() * height;
+    randomH = randomH - randomH % 32;
+    $dom.style.top = randomH + 'px';
+    // 初始值为容器可见区域的最大值
+    $dom.style.left = `${width}px`;
+    $dom.style.transform = `translateX(-${width + 300}px)`;
+    $dom.style.transition = `transform ${time}s linear 0s`;
+    setTimeout(function() {
+      $content.removeChild($dom);
+    }, myTime * 1000);
+  }
+  // 创造弹幕
+  function barrageCreate(_text) {
+    const $barrage = document.createElement('div');
+    const time = document.querySelector('#time').value;
+    $barrage.setAttribute('class', 'barrage-item');
+    $barrage.innerHTML = `<span class="barrage-text">${_text}</span>`
+    document.querySelector("#barrage-div").appendChild($barrage)//将span放入页面div中
+    barrageRun($barrage, time);
+  }
+  // 定时器
+  function timerCreate(time, _texts) {
+    var timer = null;
+    var textArr = JSON.parse(JSON.stringify(_texts));
+    // 文字循环一次之后，重新开始
+    if (textArr.length <= 0) {
+      textArr = JSON.parse(JSON.stringify(texts));
+    }
+    timer = setTimeout(function(){
+      // 随机取字
+      const textIdx = parseInt(Math.random() * (textArr.length - 1));
+      // 创建弹幕
+      barrageCreate(textArr[textIdx]);
+      // 删除用过的文字，避免文字重复
+      textArr.splice(textIdx, 1);
+      // 下一个随机时间
+      const curTime = Math.random() * 1000 + 500;
+      if (timer) clearTimeout(timer);
+      timerCreate(curTime, textArr);
+    }, time)
+  }
+  // 设置弹幕范围
+  function setbarrageWrapper() {
+    const top = document.querySelector('#top').value;
+    const bottom = document.querySelector('#bottom').value;
+    const $wrapper = document.querySelector('.barrage-wrapper');
+    $wrapper.style.top = top + "%";
+    $wrapper.style.bottom = bottom + "%";
+  }
+
+  function barrageInit() {
+    setbarrageWrapper();
+    timerCreate(1, texts);
+  }
+  document.body.onload = function() {
+    document.querySelector('#barrageBtn').onclick = function() {
+      barrageInit();
+    }
+  }
+</script>
 </html>
