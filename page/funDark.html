@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>暗夜动画</title>
+  <style>
+    .dark { background: #000; }
+
+    .fun-dark { border: none; cursor: pointer; height: 40px; line-height: 40px; padding: 0 30px; background: #1890ff; color: #fff; border-radius: 40px;}
+    .fun-dark:hover { background: #333; }
+
+    ::view-transition-old(*) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+    ::view-transition-new(*) {
+      animation: funDark 1s ease-in;
+      /* mix-blend-mode: darken; */
+    }
+
+    @keyframes funDark {
+      from {
+        clip-path: circle(0% at var(--x) var(--y));
+      }
+      to {
+        clip-path: circle(100% at var(--x) var(--y));
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="fun-dark">暗夜动画</button>
+</body>
+<script>
+  document.body.onload = function() {
+    const $btn = document.querySelector('.fun-dark');
+    $btn.addEventListener('click', function(event) {
+      document.documentElement.style.setProperty('--x', event.clientX + 'px');
+      document.documentElement.style.setProperty('--y', event.clientY + 'px');
+
+      if(document.startViewTransition) {
+        document.startViewTransition(() => {
+          document.documentElement.classList.toggle('dark');
+        })
+      } else {
+        document.documentElement.classList.toggle('dark');
+      }
+    })
+  }
+</script>
+</html>
