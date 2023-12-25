@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爆炸按钮</title>
+  <style>
+    :root {
+      --img: '';
+      --img-size: '';
+      --start: '';
+      --end: '';
+    }
+    body {
+      text-align: center;
+    }
+
+    .exploded-btn {
+      display: inline-block;
+      margin: 50px auto;
+      border: none;
+      cursor: pointer;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 30px;
+      background: #1890ff;
+      color: #fff;
+      border-radius: 40px;
+      cursor: pointer;
+      position: relative;
+      outline: 0;
+      transition: transform ease-in 0.1s, background-color ease-in 0.1s;
+    }
+
+    .exploded-btn::before {
+      border: solid 1px #ddd;
+      display: inline-block;
+      border-radius: 80px;
+      position: absolute;
+      content: '';
+      left: -20px;
+      right: -20px;
+      top: -20px;
+      bottom: -20px;
+      pointer-events: none;
+      transition: ease-in-out .5s;
+      background-repeat: no-repeat;
+      background-image: var(--img);
+      background-size: var(--img-size);
+      background-position: var(--start);
+      animation: exploded ease-in-out .6s forwards;
+    }
+
+    .exploded-btn:active {
+      transform: scale(0.9);
+      background-color: #1890ff;
+    }
+
+    .exploded-btn:active::before {
+      animation: none;
+      background-size: 0;
+    }
+
+    @keyframes exploded {
+      0% {
+        background-position: var(--start);
+      }
+
+      100% {
+        background-position: var(--end);
+        background-size: 0% 0%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="exploded-btn">爆炸按钮</button>
+</body>
+<script>
+  window.onload = function() {
+    const $btn = document.querySelector('.exploded-btn'),
+      $btnBefore = window.getComputedStyle($btn, '::before'),
+      width = $btn.clientWidth,
+      height = $btn.clientHeight,
+      width_before = width + 40,
+      height_before = height + 40;
+    const startArr = ParamEllipse(width_before/2, height_before/2, (width_before/2 - 20), (height_before/2 - 20), .5);
+    document.documentElement.style.setProperty('--start', startArr.join(','));
+    const endArr = ParamEllipse(width_before/2, height_before/2, width_before/2, height_before/2, .5);
+    document.documentElement.style.setProperty('--end', endArr.join(','));
+    document.documentElement.style.setProperty('--img', getImg(startArr.length));
+    document.documentElement.style.setProperty('--img-size', getImgSize(startArr.length));
+
+    console.log(startArr, endArr, $btnBefore.getPropertyValue('background-position'), $btnBefore.getPropertyValue('background-size'));
+  }
+  // 函数的参数x,y为椭圆中心；a,b分别为椭圆横半轴；step 间隔
+  function ParamEllipse(x, y, a, b, step) {
+    //i每次循环增加1/max，表示度数的增加
+    const arr = [];
+    for (var i = 0; i < 2 * Math.PI; i += step) {
+      //参数方程为x = a * cos(i), y = b * sin(i)，
+      //参数为i，表示度数（弧度）
+      arr.push("left "+ (x + a * Math.cos(i)).toFixed(2) +"px top "+ (y + b * Math.sin(i)).toFixed(2) +'px');
+    }
+    return arr;
+  };
+  function getImg(length) {
+    let str = '';
+    for (let i = 0; i < length; i++) {
+      str += 'radial-gradient(circle, #1890ff 20%, transparent 20%)';
+      if(i !== length - 1) str += ','
+    }
+    return str;
+  }
+  function getImgSize(length) {
+    const sizes = ['20%', '22%', '24%', '26%', '28%', '30%'];
+    let str = '';
+    for (let i = 0; i < length; i++) {
+      const idx = Math.floor(Math.random() * sizes.length)
+      str += sizes[idx] +' '+ sizes[idx];
+      if(i !== length - 1) str += ','
+    }
+    return str;
+  }
+</script>
+
+</html>
