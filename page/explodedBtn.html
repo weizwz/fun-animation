@@ -34,9 +34,9 @@
     }
 
     .exploded-btn::before {
-      border: solid 1px #ddd;
+      /* border: solid 1px #ddd;
+      border-radius: 80px; */
       display: inline-block;
-      border-radius: 80px;
       position: absolute;
       content: '';
       left: -20px;
@@ -92,8 +92,6 @@
     document.documentElement.style.setProperty('--end', endArr.join(','));
     document.documentElement.style.setProperty('--img', getImg(startArr.length));
     document.documentElement.style.setProperty('--img-size', getImgSize(startArr.length));
-
-    console.log(startArr, endArr, $btnBefore.getPropertyValue('background-position'), $btnBefore.getPropertyValue('background-size'));
   }
   // 函数的参数x,y为椭圆中心；a,b分别为椭圆横半轴；step 间隔
   function ParamEllipse(x, y, a, b, step) {
@@ -102,7 +100,7 @@
     for (var i = 0; i < 2 * Math.PI; i += step) {
       //参数方程为x = a * cos(i), y = b * sin(i)，
       //参数为i，表示度数（弧度）
-      arr.push("left "+ (x + a * Math.cos(i)).toFixed(2) +"px top "+ (y + b * Math.sin(i)).toFixed(2) +'px');
+      arr.push("left "+ (x + a * Math.cos(i) - 10).toFixed(2) +"px top "+ (y + b * Math.sin(i) - 5).toFixed(2) +'px');
     }
     return arr;
   };
@@ -115,7 +113,7 @@
     return str;
   }
   function getImgSize(length) {
-    const sizes = ['20%', '22%', '24%', '26%', '28%', '30%'];
+    const sizes = ['20%', '22%', '24%', '26%', '28%', '30%', '32%'];
     let str = '';
     for (let i = 0; i < length; i++) {
       const idx = Math.floor(Math.random() * sizes.length)
