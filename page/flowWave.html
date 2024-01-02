@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>流动波浪</title>
+  <style>
+    .card {
+      width: 300px;
+      height: 420px;
+      margin: 40px auto;
+      background: #409eff;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      height: 700px;
+      width: 700px;
+      opacity: 0.3;
+      left: 0;
+      top: 0;
+      margin-left: -70%;
+      margin-top: -130%;
+      background: radial-gradient(#409effc7, #0027ffcc);
+      border-radius: 40%;
+      animation: wave 10s infinite linear;
+    }
+    .wave:nth-child(2) {
+      top: 6px;
+      animation-duration: 15s;
+    }
+    .wave:nth-child(3) {
+      top: 12px;
+      animation-duration: 20s;
+    }
+    @keyframes wave {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      font-size: 5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="content">
+      HELLO
+    </div>
+  </div>
+</body>
+
+</html>
