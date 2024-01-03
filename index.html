@@ -12,8 +12,8 @@
     h2 > span { font-size: 18px; font-weight: 400; }
     .badge { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
     .badge > a { margin: 10px 10px 0 0; }
-    #nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin: 20px auto 0; width: 70%;}
-    .nav-item { height: 40px; padding: 0 10px; line-height: 40px; font-size: 18px; margin-right: 10px; cursor: pointer; position: relative; }
+    #nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin: 20px auto 0; width: 70%; gap: .6rem; }
+    .nav-item { height: 40px; padding: 0 10px; line-height: 40px; font-size: 18px; cursor: pointer; position: relative; }
     .nav-item::before {content: ''; position: absolute; bottom: 2px; left: 10px; width: 0; height: 2px; border-radius: 2px;  background: var(--color); transition-duration: 0.3s; }
     .nav-item:hover { color: var(--color)  }
     .nav-item:hover::before { width: calc(100% - 20px); }
@@ -44,6 +44,7 @@
     { name: '流动波浪', path: 'page/flowWave.html' },
     { name: '流动边框', path: 'page/flowBoder.html' },
     { name: '登录表单', path: 'page/loginForm.html' },
+    { name: '背景文字', path: 'page/bgText.html' }
   ]
   document.body.onload = function() {
     let navStr = ''
