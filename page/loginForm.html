@@ -48,10 +48,9 @@
       left: 0px;
       background-color: #00bfff;
     }
-    .message,
     .signin {
       font-size: 14.5px;
-      color: rgba(255, 255, 255, 0.7);
+      color: #333;
     }
     .signin {
       text-align: center;
@@ -61,11 +60,6 @@
     }
     .signin a {
       color: #00bfff;
-    }
-    .flex {
-      display: flex;
-      width: 100%;
-      gap: 6px;
     }
     .form label {
       position: relative;
@@ -132,35 +126,27 @@
 
 <body>
   <form class="form">
-    <p class="title">Register </p>
-    <p class="message">Signup now and get full access to our app. </p>
-    <div class="flex">
-      <label>
-        <input class="input" type="text" placeholder="" required="">
-        <span>Firstname</span>
-      </label>
-
-      <label>
-        <input class="input" type="text" placeholder="" required="">
-        <span>Lastname</span>
-      </label>
-    </div>
+    <p class="title">注册</p>
+    <label>
+      <input class="input" type="text" placeholder="" required="">
+      <span>账号</span>
+    </label>
 
     <label>
       <input class="input" type="email" placeholder="" required="">
-      <span>Email</span>
+      <span>邮箱</span>
     </label>
 
     <label>
       <input class="input" type="password" placeholder="" required="">
-      <span>Password</span>
+      <span>密码</span>
     </label>
     <label>
       <input class="input" type="password" placeholder="" required="">
-      <span>Confirm password</span>
+      <span>确认密码</span>
     </label>
-    <button class="submit">Submit</button>
-    <p class="signin">Already have an acount ? <a href="#">Signin</a> </p>
+    <button class="submit">注册</button>
+    <p class="signin">已有账号? <a href="#">登录</a> </p>
   </form>
 </body>
 
