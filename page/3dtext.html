@@ -6,27 +6,45 @@
   <style>
     :root {
       --3dcolor: rgba(224, 18, 34, .8);
+      font-family: '隶书','宋体',PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,sans-serif;
     }
     .num-text {
-      width: 50%;
-      margin: 100px auto;
-      font-size: 200px;
-      line-height: 300px;
-      letter-spacing: 20px;
-      color: #fff;
+      width: 100%;
+      text-align: center;
+      margin: 40px auto;
+      font-size: 10rem;
+      line-height: 10rem;
+      letter-spacing: 1rem;
+      color: #ffa5ac;
       /* text-shadow: -3px -3px 0 rgba(0, 0, 0, 0.8), 10px 10px 0 rgba(0, 0, 0, 0.8); */
-      text-shadow: -1px -1px var(--3dcolor),-2px -2px var(--3dcolor),-3px -3px var(--3dcolor),-4px -4px var(--3dcolor),
-      -5px -5px var(--3dcolor),-6px -6px var(--3dcolor),-7px -7px var(--3dcolor),-8px -8px var(--3dcolor),
+      text-shadow: 
       1px 1px var(--3dcolor),2px 2px var(--3dcolor),3px 3px var(--3dcolor),4px 4px var(--3dcolor),
       5px 5px var(--3dcolor),6px 6px var(--3dcolor),7px 7px var(--3dcolor),8px 8px var(--3dcolor);
       font-style: italic;
-      transform: rotate3d(1, 1, 1, -10deg);
+    }
+    .num-text:nth-child(2) {
+      color: #ffa5ac;
+      text-shadow: 
+      -1px -1px var(--3dcolor),-2px -2px var(--3dcolor),-3px -3px var(--3dcolor),-4px -4px var(--3dcolor),
+      -5px -5px var(--3dcolor),-6px -6px var(--3dcolor),-7px -7px var(--3dcolor),-8px -8px var(--3dcolor);
+      font-family: '华文琥珀','宋体';
+    }
+    .num-text:nth-child(3) {
+      font-style: normal;
+      letter-spacing: 0;
+      font-family: '楷体';
     }
   </style>
 </head>
 <body>
   <div class="num-text">
     ¥3698
+  </div>
+  <div class="num-text">
+    $9872
+  </div>
+  <div class="num-text">
+    测试文字
   </div>
 </body>
 </html>
