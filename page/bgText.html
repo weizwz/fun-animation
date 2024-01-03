@@ -6,36 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>背景文字</title>
   <style>
-  .card {
-    width: 100%;
-    height: 300px;
-    margin: 40px auto;
-		background: url(../img/barrage.png) no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .content {
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255, 0.9);
-    mix-blend-mode: screen;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  h1 {
-    font-size: 5rem;
-    box-sizing: border-box;
-  }
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .card {
+      width: 100%;
+      height: 100vh;
+      background: url(../img/barrage.png) no-repeat;
+      background-size: cover;
+    }
+    .content {
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255, 0.9);
+      mix-blend-mode: screen;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      line-height: 6rem;
+      font-size: 5rem;
+      margin: 3rem 0;
+      box-sizing: border-box;
+      padding-left: 5rem;
+    }
   </style>
 </head>
 
 <body>
   <div class="card">
     <div class="content">
-      <h1>解决问题的关键是找到关键的问题</h1>
+      <h1>这个问题的关键，<br />是要找到关键的问题</h1>
+      <h1>情况具体是什么样的，<br />还要看具体的情况</h1>
     </div>
   </div>
 </body>
