@@ -9,27 +9,32 @@
     :root {
       --color: #409eff;
     }
-    h2 { text-align: center; }
+    * { padding: 0; margin: 0; box-sizing: border-box;}
+    h2 { text-align: center; line-height: 50px; margin-top: 10px; }
     h2 > span { font-size: 18px; font-weight: 400; }
     .badge { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
     .badge > a { margin: 10px 10px 0 0; }
-    #nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin: 20px auto 0; width: 70%; gap: .6rem; }
+    #nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin: 20px auto 0; width: 70%; gap: .6rem; border: solid 1px #ddd; border-radius: 1rem; padding: 10px 0; }
     .nav-item { height: 40px; padding: 0 10px; line-height: 40px; font-size: 18px; cursor: pointer; position: relative; }
     .nav-item::before {content: ''; position: absolute; bottom: 2px; left: 10px; width: 0; height: 2px; border-radius: 2px;  background: var(--color); transition-duration: 0.3s; }
-    .nav-item:hover { color: var(--color)  }
-    .nav-item:hover::before { width: calc(100% - 20px); }
+    .nav-item:hover, .nav-item.active { color: var(--color)  }
+    .nav-item:hover::before, .nav-item.active::before { width: calc(100% - 20px); }
+    .content { width: 70%; margin: 20px auto 0; height: calc(100vh - 300px); border: solid 1px #ddd; border-radius: 1rem; overflow: hidden;}
   </style>
 </head>
 <body>
   <h2>funAnimation <span> —— 有趣的样式和动画</span></h2>
   <div class="badge">
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://img.shields.io/badge/language-CSS3-1572B6?logo=css3" alt=""></a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://img.shields.io/badge/language-CSS3-F43059?logo=css3&logoColor=F43059" alt=""></a>
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/language-JS-f7df1e?logo=javascript" alt=""></a>
-    <a href="https://github.com/weizwz/fun-animation" target="_blank"><img src="https://img.shields.io/badge/funAnimation-Github-d021d6?logo=GitHub" alt="funAnimation"></a>
+    <a href="https://github.com/weizwz/fun-animation" target="_blank"><img src="https://img.shields.io/badge/funAnimation-Github-ff00ff?logo=GitHub&logoColor=ff00ff" alt="funAnimation"></a>
     <a href="https://mit-license.org/" target="_blank"><img src="https://img.shields.io/github/license/weizwz/fun-animation" alt="license"></a>
   </div>
   <div id="nav">
-    <!-- <div class="item"></div> -->
+    <!-- <div class="nav-item"></div> -->
+  </div>
+  <div class="content">
+    <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
   </div>
 </body>
 <script>
@@ -40,7 +45,7 @@
     { name: '自动弹幕', path: 'page/barrage.html' },
     { name: '流体按钮', path: 'page/fluidBtn.html' },
     { name: '流光按钮', path: 'page/danceTime.html' },
-    { name: '暗夜动画', path: 'page/funDark.html' },
+    { name: '暗夜动画', path: 'page/funDark.html', type: 'open' },
     { name: '爆炸按钮', path: 'page/explodedBtn.html' },
     { name: '流动波浪', path: 'page/flowWave.html' },
     { name: '流动边框', path: 'page/flowBoder.html' },
@@ -51,9 +56,26 @@
   document.body.onload = function() {
     let navStr = ''
     for (const item of config) {
-      navStr += `<div class="nav-item" onclick="window.open('${item.path}')">${item.name}</div>`;
+      const className = item.path === config[0].path ? 'nav-item active' : 'nav-item';
+      navStr += `<div class="${className}" onclick="load(this, '${item.path}', '${item.type}')">${item.name}</div>`;
     }
     document.querySelector('#nav').innerHTML = navStr;
   }
+
+  function load(e, path, type) {
+    const $items = document.querySelectorAll('.nav-item')
+    if ($items.length > 0) {
+      for (const item of $items) {
+        item.className = 'nav-item'
+      }
+    }
+    if(e) e.className = 'nav-item active';
+    if (type && type === 'open') {
+      window.open(path);
+    }
+    document.querySelector(".content > iframe").src = path;
+  }
+
+  load(document.querySelector('.nav-item'), config[0].path)
 </script>
 </html>
