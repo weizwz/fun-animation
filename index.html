@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,90 @@
     :root {
       --color: #409eff;
     }
-    * { padding: 0; margin: 0; box-sizing: border-box;}
-    h2 { text-align: center; line-height: 50px; margin-top: 10px; }
-    h2 > span { font-size: 18px; font-weight: 400; }
-    .badge { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
-    .badge > a { margin: 10px 10px 0 0; }
-    #nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin: 20px auto 0; width: 70%; gap: .6rem; border: solid 1px #ddd; border-radius: 1rem; padding: 10px 0; }
-    .nav-item { height: 40px; padding: 0 10px; line-height: 40px; font-size: 18px; cursor: pointer; position: relative; }
-    .nav-item::before {content: ''; position: absolute; bottom: 2px; left: 10px; width: 0; height: 2px; border-radius: 2px;  background: var(--color); transition-duration: 0.3s; }
-    .nav-item:hover, .nav-item.active { color: var(--color)  }
-    .nav-item:hover::before, .nav-item.active::before { width: calc(100% - 20px); }
-    .content { width: 70%; margin: 20px auto 0; height: calc(100vh - 300px); border: solid 1px #ddd; border-radius: 1rem; overflow: hidden;}
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+      line-height: 50px;
+      margin-top: 10px;
+    }
+
+    h2>span {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .badge {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .badge>a {
+      margin: 10px 10px 0 0;
+    }
+
+    #nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto 0;
+      width: 70%;
+      gap: .6rem;
+      border: solid 1px #ddd;
+      border-radius: 1rem;
+      padding: 10px 0;
+    }
+
+    .nav-item {
+      height: 40px;
+      padding: 0 10px;
+      line-height: 40px;
+      font-size: 18px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 10px;
+      width: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--color);
+      transition-duration: 0.3s;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--color)
+    }
+
+    .nav-item:hover::before,
+    .nav-item.active::before {
+      width: calc(100% - 20px);
+    }
+
+    .content {
+      width: 70%;
+      margin: 20px auto 0;
+      height: calc(100vh - 300px);
+      border: solid 1px #ddd;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
   </style>
 </head>
+
 <body>
   <h2>funAnimation <span> —— 有趣的样式和动画</span></h2>
   <div class="badge">
@@ -38,7 +110,7 @@
   </div>
 </body>
 <script>
-  let router;
+  let router
   const config = [
     { name: '过年灯笼', path: 'page/lantern.html' },
     { name: '3D文字', path: 'page/3dtext.html' },
@@ -53,15 +125,20 @@
     { name: '背景文字', path: 'page/bgText.html' },
     { name: '爱心文字', path: 'page/loveText.html' }
   ]
-  document.body.onload = function() {
+  document.body.onload = function () {
     let navStr = ''
     for (const item of config) {
-      const className = item.path === config[0].path ? 'nav-item active' : 'nav-item';
-      navStr += `<div class="${className}" onclick="load(this, '${item.path}', '${item.type}')">${item.name}</div>`;
+      const className = item.path === config[0].path ? 'nav-item active' : 'nav-item'
+      navStr += `<div class="${className}" onclick="load(this, '${item.path}', '${item.type}')">${item.name}</div>`
     }
-    document.querySelector('#nav').innerHTML = navStr;
+    document.querySelector('#nav').innerHTML = navStr
   }
-
+  /**
+   * 加载页面
+   * @param {Element} e 点击的元素
+   * @param {string} path 页面路径
+   * @param {string} type 页面类型，可选值：'open' 打开新页面
+   */
   function load(e, path, type) {
     const $items = document.querySelectorAll('.nav-item')
     if ($items.length > 0) {
@@ -69,13 +146,14 @@
         item.className = 'nav-item'
       }
     }
-    if(e) e.className = 'nav-item active';
+    if (e) e.className = 'nav-item active'
     if (type && type === 'open') {
-      window.open(path);
+      window.open(path)
     }
-    document.querySelector(".content > iframe").src = path;
+    document.querySelector(".content > iframe").src = path
   }
 
   load(document.querySelector('.nav-item'), config[0].path)
 </script>
+
 </html>
