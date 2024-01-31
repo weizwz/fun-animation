@@ -27,15 +27,16 @@
     #cloudContent {
       position: absolute;
       left: -30%;
-      width: 160%;
+      width: 200%;
       height: 100%;
       overflow: hidden;
     }
     .cloud {
       position: absolute;
       top: 0;
-      right: -50%;
+      right: 0;
       height: 20px;
+      opacity: 0;
       animation: 6s linear 0s infinite cloud-left;
     }
     .cloud > img {
@@ -85,12 +86,22 @@
     }
     
     @keyframes cloud-left {
-      from {
+      0% {
         transform: translateX(0);
+        opacity: 0;
       }
-
-      to {
-        transform: translateX(-460px);
+      10% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateX(-400px);
+        opacity: 0;
       }
     }
   </style>
