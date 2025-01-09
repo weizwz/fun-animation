@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极简瀑布流</title>
+  <style>
+    .container {
+      margin: 40px auto;
+      width: calc(100% - 80px);
+      display: flex;
+      justify-content: space-between;
+    }
+    .card-wrapper {
+      width: calc(25% - 10px);
+    }
+    .card {
+      width: 100%;
+      text-indent: 10px;
+      line-height: 30px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      border: solid 1px #3d3d3d;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card-wrapper card-wrapper-1">
+
+    </div>
+    <div class="card-wrapper card-wrapper-2">
+      
+    </div>
+    <div class="card-wrapper card-wrapper-3">
+      
+    </div>
+    <div class="card-wrapper card-wrapper-4">
+      
+    </div>
+  </div>
+</body>
+<script>
+  const cardsH = [100,120,200,80,110,60,90,50,130,80,60,240,120,330,50,90,100];
+  const margin = 20;
+  const hSum = [ { name: 'card-wrapper-1', sum: 0 }, { name: 'card-wrapper-2', sum: 0 }, { name: 'card-wrapper-3', sum: 0 }, , { name: 'card-wrapper-4', sum: 0 }];
+
+  const findMinObject = (arr) => { return arr.reduce((minObj, currentObj) => { return currentObj.sum < minObj.sum ? currentObj : minObj; }); }
+
+  for(let i = 0; i < cardsH.length; i++) {
+    const minObject = findMinObject(hSum);
+    const $wrapper = document.querySelector('.' + minObject.name);
+
+    const newDiv = document.createElement("div");
+    newDiv.className = 'card'
+    newDiv.style = 'height: ' + cardsH[i] + 'px';
+    newDiv.textContent = 'card - ' + (i + 1); 
+    const container = document.getElementById("container"); 
+    $wrapper.appendChild(newDiv);
+
+    minObject.sum += cardsH[i] + margin;
+  }
+</script>
+</html>
