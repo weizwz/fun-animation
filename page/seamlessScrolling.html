@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无缝滚动</title>
+  <style>
+    *{margin: 0;padding: 0;}
+    h1{margin: 40px;text-align: center;}
+    .main{width: calc(100% - 400px);margin: 30px auto 0;display: flex;position: relative;}
+    .main:nth-child(n+2){margin-top: 0;}
+    .swiper-shadow{position:absolute;top:0;bottom:0;z-index:1;width:10%;pointer-events:none;}
+    .swiper-shadow.left{left: 0;background: linear-gradient(to right,white 0%,transparent 100%);}
+    .swiper-shadow.right{right: 0;background: linear-gradient(to right,transparent 0%,white 100%);--swiper-animation-status: running;}
+    .swiper-wrapper{width: 100%;display: flex;flex-wrap: nowrap;overflow: hidden;}
+    .swiper-wrapper.right{flex-direction: row-reverse;}
+    .swiper{padding: 10px 0;display: flex;animation: swiper-move 20s infinite linear;animation-play-state: var(--swiper-animation-status);}
+    .swiper-wrapper.right .swiper{animation: swiper-move-right 20s infinite linear;animation-play-state: var(--swiper-animation-status);}
+    .swiper-wrapper:hover,.swiper-wrapper.right:hover{--swiper-animation-status: paused;}
+    .card{width: 150px;height: 100px;line-height: 100px;border-radius: 12px;margin-right: 12px;text-align: center;cursor: pointer;}
+    .card:hover{box-shadow: 0 2px 8px 4px #BABABC;}
+    .card-1{background: #ffa39e;}
+    .right .card-1{order: 8;}
+    .card-2{background: #ffbb96;}
+    .right .card-2{order: 7;}
+    .card-3{background: #ffd591;}
+    .right .card-3{order: 6;}
+    .card-4{background: #eaff8f;}
+    .right .card-4{order: 5;}
+    .card-5{background: #b7eb8f;}
+    .right .card-5{order: 4;}
+    .card-6{background: #91caff;}
+    .right .card-6{order: 3;}
+    .card-7{background: #d3adf7;}
+    .right .card-7{order: 2;}
+    .card-8{background: #ffadd2;}
+    .right .card-8{order: 1;}
+
+    @keyframes swiper-move {
+      0% {
+        transform: translateZ(0)
+      }
+      to {
+        transform: translate3d(-100%,0,0)
+      }
+    }
+    @keyframes swiper-move-right {
+      0% {
+        transform: translateZ(0)
+      }
+      to {
+        transform: translate3d(100%,0,0)
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>纯 CSS 无缝滚动</h1>
+  <div class="main">
+    <div class="swiper-shadow left"></div>
+    <div class="swiper-shadow right"></div>
+    <div class="swiper-wrapper">
+      <div class="swiper">
+        <div class="card card-1">card-1</div>
+        <div class="card card-2">card-2</div>
+        <div class="card card-3">card-3</div>
+        <div class="card card-4">card-4</div>
+        <div class="card card-5">card-5</div>
+        <div class="card card-6">card-6</div>
+        <div class="card card-7">card-7</div>
+        <div class="card card-8">card-8</div>
+      </div>
+      <div class="swiper">
+        <div class="card card-1">card-1</div>
+        <div class="card card-2">card-2</div>
+        <div class="card card-3">card-3</div>
+        <div class="card card-4">card-4</div>
+        <div class="card card-5">card-5</div>
+        <div class="card card-6">card-6</div>
+        <div class="card card-7">card-7</div>
+        <div class="card card-8">card-8</div>
+      </div>
+      <div class="swiper">
+        <div class="card card-1">card-1</div>
+        <div class="card card-2">card-2</div>
+        <div class="card card-3">card-3</div>
+        <div class="card card-4">card-4</div>
+        <div class="card card-5">card-5</div>
+        <div class="card card-6">card-6</div>
+        <div class="card card-7">card-7</div>
+        <div class="card card-8">card-8</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main">
+    <div class="swiper-shadow left"></div>
+    <div class="swiper-shadow right"></div>
+    <div class="swiper-wrapper right">
+      <div class="swiper">
+        <div class="card card-1">card-1</div>
+        <div class="card card-2">card-2</div>
+        <div class="card card-3">card-3</div>
+        <div class="card card-4">card-4</div>
+        <div class="card card-5">card-5</div>
+        <div class="card card-6">card-6</div>
+        <div class="card card-7">card-7</div>
+        <div class="card card-8">card-8</div>
+      </div>
+      <div class="swiper">
+        <div class="card card-1">card-1</div>
+        <div class="card card-2">card-2</div>
+        <div class="card card-3">card-3</div>
+        <div class="card card-4">card-4</div>
+        <div class="card card-5">card-5</div>
+        <div class="card card-6">card-6</div>
+        <div class="card card-7">card-7</div>
+        <div class="card card-8">card-8</div>
+      </div>
+      <div class="swiper">
+        <div class="card card-1">card-1</div>
+        <div class="card card-2">card-2</div>
+        <div class="card card-3">card-3</div>
+        <div class="card card-4">card-4</div>
+        <div class="card card-5">card-5</div>
+        <div class="card card-6">card-6</div>
+        <div class="card card-7">card-7</div>
+        <div class="card card-8">card-8</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -8,6 +8,7 @@
   <title>Funny Animation</title>
   <style>
     :root{--color:#409eff}*{padding:0;margin:0;box-sizing:border-box}
+    .head{padding-right: 240px;}
     h2{text-align:center;line-height:50px;margin-top:10px}
     h2>span{font-size:18px;font-weight:400}.badge{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}
     .badge>a{margin:10px 10px 0 0}
@@ -24,12 +25,14 @@
 </head>
 
 <body>
-  <h2>funAnimation <span> —— 有趣的样式和动画</span></h2>
-  <div class="badge">
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://img.shields.io/badge/language-CSS3-F43059?logo=css3&logoColor=F43059" alt=""></a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/language-JS-f7df1e?logo=javascript" alt=""></a>
-    <a href="https://github.com/weizwz/fun-animation" target="_blank"><img src="https://img.shields.io/badge/funAnimation-Github-ff00ff?logo=GitHub&logoColor=ff00ff" alt="funAnimation"></a>
-    <a href="https://mit-license.org/" target="_blank"><img src="https://img.shields.io/github/license/weizwz/fun-animation" alt="license"></a>
+  <div class="head">
+    <h2>funAnimation <span> —— 有趣的样式和动画</span></h2>
+    <div class="badge">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://img.shields.io/badge/language-CSS3-F43059?logo=css3&logoColor=F43059" alt=""></a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/language-JS-f7df1e?logo=javascript" alt=""></a>
+      <a href="https://github.com/weizwz/fun-animation" target="_blank"><img src="https://img.shields.io/badge/funAnimation-Github-ff00ff?logo=GitHub&logoColor=ff00ff" alt="funAnimation"></a>
+      <a href="https://mit-license.org/" target="_blank"><img src="https://img.shields.io/github/license/weizwz/fun-animation" alt="license"></a>
+    </div>
   </div>
   <div class="main">
     <div class="content">
@@ -42,6 +45,8 @@
 </body>
 <script>
   const config = [
+    { name: '无缝滚动', path: 'page/seamlessScrolling.html' },
+    { name: '极简瀑布流', path: 'page/autoLayout.html' },
     { name: '龙年腾云', path: 'page/dragon.html' },
     { name: '过年灯笼', path: 'page/lantern.html' },
     { name: '3D文字', path: 'page/3dtext.html' },
@@ -54,7 +59,6 @@
     { name: '登录表单', path: 'page/loginForm.html' },
     { name: '背景文字', path: 'page/bgText.html' },
     { name: '爱心文字', path: 'page/loveText.html' },
-    { name: '极简瀑布流', path: 'page/autoLayout.html' },
     { name: '黑暗切换动画', path: 'page/funDark.html', type: 'open' },
   ]
   document.body.onload = function () {
