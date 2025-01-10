@@ -8,14 +8,13 @@
     .dark { background: #000; }
 
     .fun-dark { display: block; margin: 10% auto; border: none; cursor: pointer; height: 40px; line-height: 40px; padding: 0 30px; background: #1890ff; color: #fff; border-radius: 40px;}
-    .fun-dark:hover { background: #333; }
 
     ::view-transition-old(*) {
       animation: none;
       mix-blend-mode: normal;
     }
     ::view-transition-new(*) {
-      animation: funDark 1s ease-in;
+      animation: funDark .8s ease-in;
       /* mix-blend-mode: darken; */
     }
 
@@ -30,7 +29,7 @@
   </style>
 </head>
 <body>
-  <button class="fun-dark">暗夜动画，点我</button>
+  <button class="fun-dark">黑白换肤动画，点我</button>
 </body>
 <script>
   document.body.onload = function() {

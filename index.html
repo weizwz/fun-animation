@@ -8,19 +8,18 @@
   <title>Funny Animation</title>
   <style>
     :root{--color:#409eff}*{padding:0;margin:0;box-sizing:border-box}
-    .head{padding-right: 240px;}
     h2{text-align:center;line-height:50px;margin-top:10px}
     h2>span{font-size:18px;font-weight:400}.badge{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}
     .badge>a{margin:10px 10px 0 0}
-    .main{display:flex;justify-content:space-between;margin-top:20px;padding:0 160px;height:calc(100vh - 180px);overflow:hidden}
-    #nav{width:240px;height:100%;overflow-y:auto;display:flex;flex-direction:column;padding:20px;border:solid 1px #ddd;border-radius:1rem}
-    .nav-item{width:fit-content;height:36px;padding:0 10px;line-height:36px;font-size:16px;cursor:pointer;position:relative}
-    .nav-item.open{margin-top:10px;}
-    .nav-item.open::after{content:'';position:absolute;top:-5px;left:10px;width:100%;border-top:solid 1px #ddd;}
+    .main{margin-top:20px;padding:0 10vw;}
+    #nav{display:flex;flex-wrap: wrap;padding:20px;border:solid 1px #ddd;border-radius:1rem;max-height: 150px;overflow-y:auto;}
+    .nav-item{height:36px;padding:0 10px;line-height:36px;font-size:16px;cursor:pointer;position:relative}
+    .nav-item.open{margin-left:10px;}
+    .nav-item.open::after{content:'';position:absolute;top:25%;left:-5px;height:50%;width: 0;;border-left:solid 1px #ddd;}
     .nav-item::before{content:'';position:absolute;bottom:2px;left:10px;width:0;height:2px;border-radius:2px;background:var(--color);transition-duration:0.3s}
     .nav-item:hover,.nav-item.active{color:var(--color)}
     .nav-item:hover::before,.nav-item.active::before{width:calc(100% - 20px)}
-    .content{width:calc(100% - 260px);height:100%;border:solid 1px #ddd;border-radius:1rem;overflow:hidden}
+    .content{margin-top: 20px;width:100%;height:calc(100vh - 300px);border:solid 1px #ddd;border-radius:1rem;overflow:hidden}
   </style>
 </head>
 
@@ -35,18 +34,18 @@
     </div>
   </div>
   <div class="main">
-    <div class="content">
-      <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
-    </div>
     <div id="nav">
       <!-- <div class="nav-item"></div> -->
+    </div>
+    <div class="content">
+      <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
     </div>
   </div>
 </body>
 <script>
   const config = [
     { name: '无缝滚动', path: 'page/seamlessScrolling.html' },
-    { name: '极简瀑布流', path: 'page/autoLayout.html' },
+    { name: '瀑布排列', path: 'page/autoLayout.html' },
     { name: '龙年腾云', path: 'page/dragon.html' },
     { name: '过年灯笼', path: 'page/lantern.html' },
     { name: '3D文字', path: 'page/3dtext.html' },
@@ -59,7 +58,7 @@
     { name: '登录表单', path: 'page/loginForm.html' },
     { name: '背景文字', path: 'page/bgText.html' },
     { name: '爱心文字', path: 'page/loveText.html' },
-    { name: '黑暗切换动画', path: 'page/funDark.html', type: 'open' },
+    { name: '黑白换肤', path: 'page/funDark.html', type: 'open' },
   ]
   document.body.onload = function () {
     let navStr = ''
