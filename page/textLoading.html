@@ -33,17 +33,15 @@
     .loading-text.loading-color2 { color: #24E5C7; }
     .loading-text.loading-color3 { color: #FF8446; }
     .l-1 {  animation-delay: 0s; }
-    .l-2 { animation-delay: 0.0233s; }
-    .l-3 { animation-delay: 0.0872s; }
-    .l-4 { animation-delay: 0.1826s; }
-    .l-5 { animation-delay: 0.3005s; }
-    .l-6 { animation-delay: 0.4320s; }
-    .l-7 { animation-delay: 0.5680s; }
-    .l-8 { animation-delay: 0.6995s; }
-    .l-9 { animation-delay: 0.8174s; }
-    .l-10 { animation-delay: 0.9128s; }
-    .l-11 { animation-delay: 0.9767s; }
-    .l-12 { animation-delay: 1s; }
+    .l-2 { animation-delay: 0.06s; }
+    .l-3 { animation-delay: 0.166s; }
+    .l-4 { animation-delay: 0.303s; }
+    .l-5 { animation-delay: 0.458s; }
+    .l-6 { animation-delay: 0.615s; }
+    .l-7 { animation-delay: 0.762s; }
+    .l-8 { animation-delay: 0.885s; }
+    .l-9 { animation-delay: 0.968s; }
+    .l-10 { animation-delay: 1s; }
 
     @keyframes loading {
       0% {
@@ -61,20 +59,49 @@
   <div class="load">
     <h1>纯CSS加载动画</h1>
     <div class="load-main">
-      <div class="l-1 loading-text">w</div>
-      <div class="l-2 loading-text loading-color2">e</div>
-      <div class="l-3 loading-text">i</div>
-      <div class="l-4 loading-text loading-color2">z</div>
-      <div class="l-5 loading-text loading-color3">.</div>
-      <div class="l-6 loading-text">.</div>
-      <div class="l-7 loading-text loading-color2">.</div>
-      <div class="l-8 loading-text loading-color3">w</div>
-      <div class="l-9 loading-text">z</div>
+      <div class="l-1 loading-text">l</div>
+      <div class="l-2 loading-text loading-color2">o</div>
+      <div class="l-3 loading-text">a</div>
+      <div class="l-4 loading-text loading-color2">d</div>
+      <div class="l-5 loading-text loading-color3">i</div>
+      <div class="l-6 loading-text">n</div>
+      <div class="l-7 loading-text loading-color2">g</div>
+      <div class="l-8 loading-text loading-color3">.</div>
+      <div class="l-9 loading-text">.</div>
       <div class="l-10 loading-text loading-color2">.</div>
-      <div class="l-11 loading-text loading-color3">.</div>
-      <div class="l-12 loading-text">.</div>
     </div>
   </div>
 </body>
+<script>
+    // 定义贝塞尔曲线函数
+    function cubicBezier(p1x, p1y, p2x, p2y) {
+      return function (t) {
+        const cx = 3 * p1x
+        const bx = 3 * (p2x - p1x) - cx
+        const ax = 1 - cx - bx
+        const cy = 3 * p1y
+        const by = 3 * (p2y - p1y) - cy
+        const ay = 1 - cy - by
 
+        const x = ((ax * t + bx) * t + cx) * t
+        const y = ((ay * t + by) * t + cy) * t
+        return y
+      }
+    }
+
+    // 定义贝塞尔曲线参数 ease
+    const bezier = cubicBezier(0.25, 0.1, 0.25, 1.0)
+
+    // 计算1秒内的13个时间段
+    const numSegments = 10
+    const allTime = 1
+    const intervals = []
+    for (let i = 0; i < numSegments; i++) {
+      const t = i / (numSegments - 1)
+      intervals.push(Math.floor(bezier(t) * allTime * 1000) / 1000) // 向下取整到三位小数
+    }
+
+    // 输出时间间隔
+    console.log(intervals);
+</script>
 </html>
