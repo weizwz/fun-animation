@@ -7,7 +7,7 @@
   <title>打字机</title>
   <style>
     .typewriter {
-      margin: 20px auto;
+      margin: 40px auto 0;
       font-size: 32px;
       font-weight: 500;
       color: #1890ff;
@@ -15,8 +15,12 @@
       white-space: nowrap;
       overflow: hidden;
       /* 光标效果 */
-      border-right: .15em solid black;
-      animation: typing 5s steps(15, end) forwards, blink-caret .75s step-end infinite;
+      border-right: .15em solid transparent;
+      animation: typing 3s steps(7, end) forwards, blink-caret .75s step-end infinite, blink-caret-end 0s linear 3.75s forwards;
+    }
+    .typewriter.next {
+      margin-top: 12px;
+      animation: typing 3s steps(7, end) 4s forwards, blink-caret .75s step-end 4s infinite;
     }
     /* 打字效果 */
     @keyframes typing {
@@ -24,7 +28,7 @@
         width: 0
       }
       to {
-        width: 15em
+        width: 7em
       }
     }
     /* 光标闪烁效果 */
@@ -38,12 +42,21 @@
         border-color: black
       }
     }
+    @keyframes blink-caret-end {
+      from,
+      to {
+        border-color: transparent
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="typewriter">
-    长风破浪会有时，直挂云帆济沧海
+    长风破浪会有时
+  </div>
+  <div class="typewriter next">
+    直挂云帆济沧海
   </div>
 </body>
 
