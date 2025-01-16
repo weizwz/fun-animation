@@ -10,9 +10,9 @@
       display: flex;
       flex-direction: column;
       margin: 40px auto;
-      gap: 10px;
+      gap: 20px;
       max-width: 350px;
-      padding: 20px;
+      padding: 20px 40px;
       border-radius: 20px;
       position: relative;
       background-color: #ffffff;
@@ -68,9 +68,9 @@
       background-color: #fff;
       color: #333;
       width: 100%;
-      padding: 20px 05px 05px 10px;
+      padding: 20px 5px 5px 10px;
       outline: 0;
-      border: 1px solid rgba(105, 105, 105, 0.397);
+      border: 1px solid #ddd;
       border-radius: 10px;
       box-sizing: border-box;
     }
@@ -78,21 +78,16 @@
       color: rgba(0, 0, 0, 0.5);
       position: absolute;
       left: 10px;
-      top: 2px;
-      font-size: 0.7em;
-      cursor: text;
-      transition: 0.3s ease;
-    }
-    .form label .input:placeholder-shown+span {
       top: 12.5px;
-      font-size: 0.7em;
+      font-size: 14px;
+      cursor: text;
+      transition: all .3s ease;
     }
     .form label .input:focus+span,
     .form label .input:valid+span {
       color: #00bfff;
       top: 2px;
-      font-size: 0.7em;
-      font-weight: 600;
+      font-size: 12px;
     }
     .input {
       font-size: medium;
@@ -104,6 +99,7 @@
       border-radius: 10px;
       color: #fff;
       font-size: 16px;
+      cursor: pointer;
       transform: .3s ease;
       background-color: #00bfff;
     }
