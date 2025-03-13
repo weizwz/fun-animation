@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自增数字</title>
+  <style>
+    
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .wrapper {
+      width: 600px;
+      margin: 40px auto;
+    }
+    #counter {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    #progressBar {
+      width: 100%;
+      height: 2rem;
+      background-color: #ccc;
+      border-radius: 2rem;
+      position: relative;
+    }
+    #fillBar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: 100%;
+      background-color: #1890ff;
+      border-radius: 20px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id="counter">88545</div>
+    <div id="progressBar">
+      <div id="fillBar"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      function animateNumberAndProgressBar({
+        counterSelector,
+        fillBarSelector,
+        start = 0,
+        end,
+        totalDuration = 2000,
+        minPercentage = 5,
+        targetPercentage = 75
+      }) {
+        // 如果开始和结束的数字相同，直接返回
+        if (start == end) {
+          return;
+        }
+        // 调整进度条起始位置，要基本符合进度条的长度
+        const maxNum = end * 100 / targetPercentage;
+        let startPercentage = start / maxNum * 100;
+
+        const counterElement = document.querySelector(counterSelector);
+        const fillBarElement = document.querySelector(fillBarSelector);
+
+        let startTime = null;
+        const totalSteps = end - start;
+
+        function formatNumber(num) {
+          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function animateCounter(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+
+          const progress = Math.min(elapsed / totalDuration, 1);
+          const currentNumber = Math.floor(start + progress * totalSteps);
+          let stepPercentage = progress * (targetPercentage - startPercentage);
+          // 保证肉眼能看到至少5%的变化
+          if (targetPercentage - startPercentage < minPercentage) {
+            stepPercentage = progress * minPercentage;
+            startPercentage = targetPercentage - minPercentage;
+          }
+          
+          const currentProgress = startPercentage + stepPercentage;
+
+          counterElement.textContent = formatNumber(currentNumber);
+          fillBarElement.style.width = currentProgress + '%';
+
+          if (fillBarElement.style.display !== 'block') {
+            fillBarElement.style.display = 'block';
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(animateCounter);
+          }
+        }
+
+        fillBarElement.style.width = startPercentage + '%';
+        fillBarElement.style.display = 'block';
+
+        requestAnimationFrame(animateCounter);
+      }
+
+      // 调用封装的函数
+      animateNumberAndProgressBar({
+        counterSelector: '#counter',
+        fillBarSelector: '#fillBar',
+        start: 100,
+        end: 88547,
+        totalDuration: 2000,
+        minPercentage: 5,
+        targetPercentage: 75
+      });
+    });
+  </script>
+</body>
+
+</html>
