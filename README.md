@@ -4,7 +4,7 @@
 
 ## 预览
 
-[[](https://animation.weizwz.com)](https://animation.weizwz.com)
+https://animation.weizwz.com
 
 
 ## 说明
