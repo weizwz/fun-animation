@@ -3,7 +3,8 @@
 简单有趣的样式和动画
 
 ## 预览
-https://weizwz.github.io/fun-animation/
+
+[https://weizwz.github.io/fun-animation/](https://animation.weizwz.com)
 
 
 ## 说明
